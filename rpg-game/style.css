@@ -1,0 +1,263 @@
+/* 1. Define the "Stunt" */
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-10px, 0); box-shadow: inset 0 0 50px red; } /* Move Left + Red */
+    50% { transform: translate(10px, 0); }  /* Move Right */
+    75% { transform: translate(-10px, 0); } /* Move Left */
+    100% { transform: translate(0, 0); background-color: transparent; } /* Reset */
+}
+
+/* 2. Create the Class trigger */
+.hit-animation {
+    animation: shake 0.5s; /* Run the 'shake' animation for 0.5 seconds */
+}
+
+#monster-content {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+body{
+    background-image: url('pixel-art-background.jpg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 60px;
+    margin: 0;
+    font-family: sans-serif;
+
+    image-rendering: pixelated;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#hero-card,#monster-card {
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+    border: 4px solid #4a3c31; /* Wood-color border */
+    padding: 20px;
+    border-radius: 12px;
+    color: white; /* White text for contrast */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
+
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+  
+
+}
+
+
+.hero-image, .monster-image{
+    width: 150px;         /* Make them nice and big */
+    height: 150px;
+    object-fit: contain;  /* Don't squish them */
+    
+    /* Crucial for Pixel Art look */
+    image-rendering: pixelated;
+    
+    
+    filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.5));
+    transition: transform 0.2s;
+}
+
+.hero-image:hover, .monster-image:hover {
+    transform: scale(1.1);
+}
+
+h2 {
+    margin: 10px 0 0 0;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+
+
+/* --- 6. RETRO BUTTONS --- */
+button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    
+    background-color: #fff;
+    color: #000;
+    border: 4px solid #000; /* Chunky border */
+    padding: 10px 30px;
+    cursor: pointer;
+    
+    /* Hard shadow for retro feel */
+    box-shadow: 6px 6px 0px #000; 
+    transition: all 0.1s;
+}
+
+button:hover {
+    background-color: #ffe600; /* Highlight color */
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #000;
+}
+
+button:active {
+    /* Push down effect */
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.health-bar-container {
+    width: 100%;          /* Fill the width of the card */
+    height: 30px;         /* Nice and chunky */
+    background-color: #333; /* Dark gray for "empty" health */
+    border: 4px solid #000; /* Match the button borders */
+    margin: 10px 0 20px 0;  /* Spacing */
+    position: relative;     /* Keeps it contained */
+    
+    /* Inner shadow makes it look like a groove/cutout */
+    box-shadow: inset 3px 3px 0px rgba(0,0,0,0.5); 
+}
+
+.health-bar-fill {
+    height: 100%;
+    width: 100%; /* Starts at 100% */
+    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Snappy animation */
+}
+
+.hero-color {
+    background-color: #52f252;
+    box-shadow: inset 0px 4px 0px rgba(255,255,255,0.3); /* Shine effect */
+}
+
+.monster-color {
+    background-color: #ff3333;
+    box-shadow: inset 0px 4px 0px rgba(255,255,255,0.3); /* Shine effect */
+}
+
+#game-overlay{
+    display: none;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0,0,0,0.9);
+    border: 4px solid #fff;
+    padding: 40px;
+    text-align: center;
+    z-index: 100;
+    border-radius: 12px;
+}
+
+#game-message {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 4px 4px 0 #000;
+}
+
+/* Make the reset button look distinct (Blue) */
+#reset-btn {
+    background-color: #52f252; /* Hero Green */
+    color: #000;
+    border: 4px solid #000;
+    padding: 10px 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px #000; /* Retro Shadow */
+}
+
+#reset-btn:hover {
+    background-color: #40c040; /* Slightly darker green */
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #000;
+}
+
+#reset-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+/* HERO SELECTION  */
+#hero-selection {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    min-height: 100vh;
+}
+
+#hero-selection h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.hero-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.hero-option {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    width: 200px;
+}
+
+.hero-option:hover {
+    transform: scale(1.05);
+    border-color: #ffd700;
+}
+
+.hero-option img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;  
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-option p {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.hero-option span {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+
+#game-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;  /* Three columns: hero | log | monster */
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#combat-log {
+    width: auto;
+    text-align: center;
+    
+}

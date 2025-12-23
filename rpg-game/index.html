@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG-GAME</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div id="hero-selection">
+        <h2>Choose Your Hero</h2>
+        <div class="hero-options">
+            <div class="hero-option" data-hero="warrior">
+                <img src="images/warrior.gif" alt="Warrior">
+                <p>Warrior</p>
+                <span>HP: 100 | DMG: 5-10</span>
+            </div>
+            <div class="hero-option" data-hero="mage">
+                <img src="images/mage.gif" alt="Mage">
+                <p>Mage</p>
+                <span>HP: 70 | DMG: 8-15</span>
+            </div>
+            <div class="hero-option" data-hero="rogue">
+                <img src="images/rogue.gif" alt="Rogue">
+                <p>Rogue</p>
+                <span>HP: 80 | DMG: 6-12</span>
+            </div>
+        </div>
+    </div>
+    <div id="game-container" style="display: none;">
+    <div id="hero-card">
+        <div id="hero-content">
+            <img src="warrior.png" alt="Warrior" class="hero-image">
+            <h2 id="hero-name">
+                hero
+            </h2>
+            <div class="health-bar-container">
+                <div id="hero-health-bar" class="health-bar-fill hero-color"></div>
+            </div>
+            <button id="attack-btn-h">Attack</button>
+        </div>
+    </div>
+
+    <p id="combat-log" style="color: white; font-family: 'Courier New'; font-weight: bold; text-shadow: 2px 2px 0 #000; font-size: 1.2rem;">
+        Battle Start!
+    </p>
+
+    <div id="monster-card">
+        <div id="monster-content">
+            <img src="monster.webp" alt="Goblin" class="monster-image">
+            <h2 id="monster-name">
+                monster
+            </h2>
+            <div class="health-bar-container">
+                <div id="monster-health-bar" class="health-bar-fill monster-color"></div>
+            </div>
+            <button id="attack-btn-m">Attack</button>
+        </div>
+    </div>
+
+    <div id="game-overlay">
+        <h1 id="game-message">GAME OVER</h1>
+        <button id="reset-btn">Play Again</button>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script type="module"  src="js/game.js"></script>
+  
+</body>
+</html>
